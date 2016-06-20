@@ -13,8 +13,10 @@ Set up your own Funblr:
 ----
 
 Funblr is build using Laravel 5.2 framework in PHP. All you have to do is to clone the repo and run `composer install`.
-Once you downloaded all the staff via composer, you will have to set up a few simple things, for that, make a `.env` file copying the `.env.example` file
-This is a laravel feature... So it is better if you have a look at its documentation. 
+* Once you downloaded all the staff via composer, you will have to set up a few simple things:
+* Set the app encryption key, install the datebase (and seed it if you like)
+* Make a `.env` file copying the `.env.example` file
+  - This is a laravel feature... So it is better if you have a look at its documentation. 
 
 For the `Funblr` app you will need an s3 bucket (where yo can write and so on... remember to define your policies right) in amazon so you need to add at least the following fields:
 
@@ -26,6 +28,23 @@ S3_FOLDER=a folder in the bucket. For example to distinguish dev mode to prod mo
 
 ````
 
+One last thing: Run `php artisan key:generate` and you are supposed to be good to go
+
 #Contact
 
 You can contact me at `twitter`: [@miguelsaddress](http://twitter.com/miguelsaddress)
+
+#TLDR;
+
+````
+
+git clone https://github.com/miguelsaddress/funblr.git
+cd funblr
+composer install
+php artisan key:generate
+php artisan migrate:install
+php artisan migrate:refresh --seed 
+cp .env.example .env
+# edit .env as described above
+````
+
